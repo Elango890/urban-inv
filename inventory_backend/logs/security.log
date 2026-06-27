@@ -1,0 +1,32 @@
+2026-06-10 10:36:33 INFO  32398 app.security : login_failed invalid_credentials email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-10 10:36:40 INFO  32398 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-11 03:52:48 INFO  35867 app.security : login_failed invalid_credentials email=zcity@gmail.com ip=127.0.0.1
+2026-06-11 03:53:16 INFO  35867 app.security : login_failed invalid_credentials email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-11 03:53:28 INFO  35867 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-11 10:17:37 INFO  55783 app.security : admin_reset_password target_user_id=2 by_user_id=1
+2026-06-11 12:54:19 INFO  60283 app.security : login_failed invalid_credentials email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-11 12:54:28 INFO  60283 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-12 05:56:12 INFO  82850 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-15 05:43:36 INFO  59401 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-15 13:44:31 INFO  78654 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-16 02:58:09 INFO  86210 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-16 03:00:32 INFO  86210 app.security : admin_reset_password target_user_id=6 by_user_id=1
+2026-06-16 03:00:44 INFO  86210 app.security : logout user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-16 03:01:06 INFO  86210 app.security : login_success user_id=6 email=sales@urbaninventory.local ip=127.0.0.1
+2026-06-16 03:01:54 INFO  86210 app.security : logout user_id=6 email=sales@urbaninventory.local ip=127.0.0.1
+2026-06-16 03:01:57 INFO  86210 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-17 03:33:03 INFO  90688 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-18 04:43:11 INFO  7153 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-18 15:05:01 INFO  27004 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-19 03:43:02 INFO  27004 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-20 05:22:54 INFO  51287 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-22 05:43:12 INFO  51287 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-23 04:00:12 INFO  84849 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-23 13:39:57 INFO  12004 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-24 03:51:54 INFO  18552 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-24 05:18:23 INFO  28232 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-24 13:20:50 INFO  31416 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-25 15:12:35 INFO  31416 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-26 05:14:56 INFO  31416 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-26 14:35:38 INFO  69331 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1
+2026-06-27 03:07:22 INFO  74766 app.security : login_success user_id=1 email=admin@cogitationworks.com ip=127.0.0.1

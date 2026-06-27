@@ -1,0 +1,1977 @@
+2026-06-10 10:36:41 ERROR 32398 --- [Thread-2 (process_request_thread)] dashboard.views : DashboardStatsView Error: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, purchase_order, received_by
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/dashboard/views.py", line 306, in get
+    for entry in purchase_expense_qs:
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, purchase_order, received_by
+2026-06-10 10:36:41 ERROR 32398 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/dashboard/stats/
+2026-06-10 10:36:41 ERROR 32398 --- [Thread-2 (process_request_thread)] django.server : "GET /api/dashboard/stats/?financialYearId=1 HTTP/1.1" 500 147
+2026-06-10 10:36:49 ERROR 32398 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/stock/dashboard/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/stock/views.py", line 156, in get
+    paged = qs.order_by("asset__name", "warehouse__name")[start : start + page_size]
+            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1772, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 2333, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1832, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'asset' into field. Choices are: adjustments, available_qty, damaged_quantity, id, item, item_id, minimum_stock, total_quantity, updated_at, warehouse, warehouse_id
+2026-06-10 10:36:49 ERROR 32398 --- [Thread-3 (process_request_thread)] django.server : "GET /api/stock/dashboard/?page=1&page_size=10 HTTP/1.1" 500 123521
+2026-06-10 10:36:50 ERROR 32398 --- [Thread-3 (process_request_thread)] dashboard.views : DashboardStatsView Error: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, purchase_order, received_by
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/dashboard/views.py", line 306, in get
+    for entry in purchase_expense_qs:
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, purchase_order, received_by
+2026-06-10 10:36:50 ERROR 32398 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/dashboard/stats/
+2026-06-10 10:36:50 ERROR 32398 --- [Thread-3 (process_request_thread)] django.server : "GET /api/dashboard/stats/?financialYearId=1 HTTP/1.1" 500 147
+2026-06-10 10:36:52 ERROR 32398 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/stock/dashboard/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/stock/views.py", line 156, in get
+    paged = qs.order_by("asset__name", "warehouse__name")[start : start + page_size]
+            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1772, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 2333, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1832, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'asset' into field. Choices are: adjustments, available_qty, damaged_quantity, id, item, item_id, minimum_stock, total_quantity, updated_at, warehouse, warehouse_id
+2026-06-10 10:36:52 ERROR 32398 --- [Thread-3 (process_request_thread)] django.server : "GET /api/stock/dashboard/?page=1&page_size=10 HTTP/1.1" 500 123521
+2026-06-10 10:37:00 ERROR 32398 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/stock/dashboard/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/stock/views.py", line 156, in get
+    paged = qs.order_by("asset__name", "warehouse__name")[start : start + page_size]
+            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1772, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 2333, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1832, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'asset' into field. Choices are: adjustments, available_qty, damaged_quantity, id, item, item_id, minimum_stock, total_quantity, updated_at, warehouse, warehouse_id
+2026-06-10 10:37:00 ERROR 32398 --- [Thread-2 (process_request_thread)] django.server : "GET /api/stock/dashboard/?page=1&page_size=10 HTTP/1.1" 500 123521
+2026-06-10 10:37:04 ERROR 32398 --- [Thread-3 (process_request_thread)] dashboard.views : DashboardStatsView Error: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, purchase_order, received_by
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/dashboard/views.py", line 306, in get
+    for entry in purchase_expense_qs:
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, purchase_order, received_by
+2026-06-10 10:37:04 ERROR 32398 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/dashboard/stats/
+2026-06-10 10:37:04 ERROR 32398 --- [Thread-3 (process_request_thread)] django.server : "GET /api/dashboard/stats/?financialYearId=1 HTTP/1.1" 500 147
+2026-06-10 10:37:22 ERROR 32398 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/stock/dashboard/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/stock/views.py", line 156, in get
+    paged = qs.order_by("asset__name", "warehouse__name")[start : start + page_size]
+            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1772, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 2333, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1832, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'asset' into field. Choices are: adjustments, available_qty, damaged_quantity, id, item, item_id, minimum_stock, total_quantity, updated_at, warehouse, warehouse_id
+2026-06-10 10:37:22 ERROR 32398 --- [Thread-3 (process_request_thread)] django.server : "GET /api/stock/dashboard/?page=1&page_size=10 HTTP/1.1" 500 123521
+2026-06-10 10:38:32 ERROR 32398 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/stock/dashboard/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/stock/views.py", line 156, in get
+    paged = qs.order_by("asset__name", "warehouse__name")[start : start + page_size]
+            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1772, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 2333, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1832, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'asset' into field. Choices are: adjustments, available_qty, damaged_quantity, id, item, item_id, minimum_stock, total_quantity, updated_at, warehouse, warehouse_id
+2026-06-10 10:38:32 ERROR 32398 --- [Thread-3 (process_request_thread)] django.server : "GET /api/stock/dashboard/?page=1&page_size=10 HTTP/1.1" 500 123521
+2026-06-10 10:38:32 ERROR 32398 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/stock/dashboard/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/stock/views.py", line 156, in get
+    paged = qs.order_by("asset__name", "warehouse__name")[start : start + page_size]
+            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1772, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 2333, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1832, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'asset' into field. Choices are: adjustments, available_qty, damaged_quantity, id, item, item_id, minimum_stock, total_quantity, updated_at, warehouse, warehouse_id
+2026-06-10 10:38:32 ERROR 32398 --- [Thread-3 (process_request_thread)] django.server : "GET /api/stock/dashboard/?page=1&page_size=10 HTTP/1.1" 500 123521
+2026-06-10 10:44:16 ERROR 34445 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:44:16 ERROR 34445 --- [Thread-2 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 182
+2026-06-10 10:44:27 ERROR 34445 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:44:27 ERROR 34445 --- [Thread-2 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 182
+2026-06-10 10:44:38 ERROR 34445 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:44:38 ERROR 34445 --- [Thread-2 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 499
+2026-06-10 10:44:48 ERROR 34445 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:44:48 ERROR 34445 --- [Thread-2 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 182
+2026-06-10 10:44:57 ERROR 34445 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:44:57 ERROR 34445 --- [Thread-2 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 182
+2026-06-10 10:45:06 ERROR 34445 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:45:06 ERROR 34445 --- [Thread-2 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 184
+2026-06-10 10:45:08 ERROR 34445 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:45:08 ERROR 34445 --- [Thread-2 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 183
+2026-06-10 10:46:15 ERROR 34445 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/sales/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/sales/views.py", line 1104, in get
+    for a in assets:
+             ^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'category'. Choices are: created_by, preferred_vendor
+2026-06-10 10:46:15 ERROR 34445 --- [Thread-3 (process_request_thread)] django.server : "GET /api/sales/assets/?page=1&page_size=20 HTTP/1.1" 500 156036
+2026-06-10 10:46:20 ERROR 34445 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/sales/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/sales/views.py", line 1104, in get
+    for a in assets:
+             ^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'category'. Choices are: created_by, preferred_vendor
+2026-06-10 10:46:20 ERROR 34445 --- [Thread-1 (process_request_thread)] django.server : "GET /api/sales/assets/?limit=200 HTTP/1.1" 500 154952
+2026-06-10 10:46:30 ERROR 34445 --- [Thread-4 (process_request_thread)] django.request : Internal Server Error: /api/purchases/orders/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/purchases/views.py", line 481, in get
+    return Response([_serialise_order(o, include_items=include_items) for o in qs])
+                                                                               ^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, delivery_customer, approved_by
+2026-06-10 10:46:30 ERROR 34445 --- [Thread-5 (process_request_thread)] django.request : Internal Server Error: /api/purchases/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/purchases/views.py", line 1222, in get
+    for a in assets
+             ^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'category'. Choices are: created_by, preferred_vendor
+2026-06-10 10:46:30 ERROR 34445 --- [Thread-4 (process_request_thread)] django.server : "GET /api/purchases/orders/?financialYearId=1 HTTP/1.1" 500 166324
+2026-06-10 10:46:30 ERROR 34445 --- [Thread-5 (process_request_thread)] django.server : "GET /api/purchases/assets/ HTTP/1.1" 500 154072
+2026-06-10 10:48:40 ERROR 35152 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/purchases/orders/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/purchases/views.py", line 481, in get
+    return Response([_serialise_order(o, include_items=include_items) for o in qs])
+                                                                               ^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, delivery_customer, approved_by
+2026-06-10 10:48:40 ERROR 35152 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/purchases/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/purchases/views.py", line 1222, in get
+    for a in assets
+             ^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'category'. Choices are: created_by, preferred_vendor
+2026-06-10 10:48:40 ERROR 35152 --- [Thread-1 (process_request_thread)] django.server : "GET /api/purchases/orders/?financialYearId=1 HTTP/1.1" 500 166324
+2026-06-10 10:48:40 ERROR 35152 --- [Thread-3 (process_request_thread)] django.server : "GET /api/purchases/assets/ HTTP/1.1" 500 154072
+2026-06-10 10:49:08 ERROR 35152 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:49:08 ERROR 35152 --- [Thread-1 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 216
+2026-06-10 10:49:11 ERROR 35152 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:49:11 ERROR 35152 --- [Thread-1 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 124
+2026-06-10 10:49:14 ERROR 35152 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/reports/preview/
+2026-06-10 10:49:14 ERROR 35152 --- [Thread-1 (process_request_thread)] django.server : "POST /api/reports/preview/ HTTP/1.1" 500 143
+2026-06-10 10:51:52 ERROR 35491 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/purchases/orders/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/purchases/views.py", line 481, in get
+    return Response([_serialise_order(o, include_items=include_items) for o in qs])
+                                                                               ^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'supplier'. Choices are: created_by, financial_year, vendor, delivery_customer, approved_by
+2026-06-10 10:51:52 ERROR 35491 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/purchases/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/purchases/views.py", line 1222, in get
+    for a in assets
+             ^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'category'. Choices are: created_by, preferred_vendor
+2026-06-10 10:51:52 ERROR 35491 --- [Thread-1 (process_request_thread)] django.server : "GET /api/purchases/orders/?financialYearId=1 HTTP/1.1" 500 166324
+2026-06-10 10:51:52 ERROR 35491 --- [Thread-3 (process_request_thread)] django.server : "GET /api/purchases/assets/ HTTP/1.1" 500 154072
+2026-06-10 10:56:48 ERROR 35867 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/sales/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/sales/views.py", line 1104, in get
+    for a in assets:
+             ^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'category'. Choices are: created_by, preferred_vendor
+2026-06-10 10:56:48 ERROR 35867 --- [Thread-2 (process_request_thread)] django.server : "GET /api/sales/assets/?page=1&page_size=20 HTTP/1.1" 500 156036
+2026-06-10 10:56:49 ERROR 35867 --- [Thread-5 (process_request_thread)] django.request : Internal Server Error: /api/sales/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/sales/views.py", line 1104, in get
+    for a in assets:
+             ^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'category'. Choices are: created_by, preferred_vendor
+2026-06-10 10:56:49 ERROR 35867 --- [Thread-5 (process_request_thread)] django.server : "GET /api/sales/assets/?limit=200 HTTP/1.1" 500 154952
+2026-06-11 09:38:22 ERROR 52460 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/masters/assets/create/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/inventory_backend/masters/views.py", line 828, in post
+    elif Item.objects.filter(asset_code=d["sku"].strip()).exists():
+         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1671, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1703, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1551, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1358, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/Elango-works-main/venv/lib/python3.13/site-packages/django/db/models/sql/query.py", line 1832, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'asset_code' into field. Choices are: barcode, cost_price, created_at, created_by, created_by_id, id, is_excise_product, item_type, name, po_items, preferred_vendor, preferred_vendor_id, purchase_account, purchase_description, purchase_entry_items, sales_account, sales_description, sales_items, selling_price, sku, status, stock_entries, stock_history, tax_rate, track_inventory, transfers, unit, updated_at
+2026-06-11 09:38:22 ERROR 52460 --- [Thread-1 (process_request_thread)] django.server : "POST /api/masters/assets/create/ HTTP/1.1" 500 153595
+2026-06-15 07:08:29 ERROR 63249 --- [Thread-15 (process_request_thread)] sales.views : PDF generation failed pk=2
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 919, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'asset', 'service'. Choices are: invoice, item
+2026-06-15 07:08:29 ERROR 63249 --- [Thread-15 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/2/pdf/
+2026-06-15 07:08:29 ERROR 63249 --- [Thread-15 (process_request_thread)] django.server : "GET /api/sales/invoices/2/pdf/ HTTP/1.1" 500 128
+2026-06-15 07:08:38 ERROR 63249 --- [Thread-15 (process_request_thread)] sales.views : PDF generation failed pk=3
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 919, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'asset', 'service'. Choices are: invoice, item
+2026-06-15 07:08:38 ERROR 63249 --- [Thread-15 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/3/pdf/
+2026-06-15 07:08:38 ERROR 63249 --- [Thread-15 (process_request_thread)] django.server : "GET /api/sales/invoices/3/pdf/ HTTP/1.1" 500 128
+2026-06-15 07:08:42 ERROR 63249 --- [Thread-15 (process_request_thread)] sales.views : PDF generation failed pk=3
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 919, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'asset', 'service'. Choices are: invoice, item
+2026-06-15 07:08:42 ERROR 63249 --- [Thread-15 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/3/pdf/
+2026-06-15 07:08:42 ERROR 63249 --- [Thread-15 (process_request_thread)] django.server : "GET /api/sales/invoices/3/pdf/ HTTP/1.1" 500 128
+2026-06-15 07:28:16 ERROR 63249 --- [Thread-18 (process_request_thread)] sales.views : PDF generation failed pk=3
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 919, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'asset', 'service'. Choices are: invoice, item
+2026-06-15 07:28:16 ERROR 63249 --- [Thread-18 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/3/pdf/
+2026-06-15 07:28:16 ERROR 63249 --- [Thread-18 (process_request_thread)] django.server : "GET /api/sales/invoices/3/pdf/ HTTP/1.1" 500 128
+2026-06-15 09:29:17 ERROR 69422 --- [Thread-5 (process_request_thread)] sales.views : PDF generation failed pk=4
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 971, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'service', 'asset'. Choices are: invoice, item
+2026-06-15 09:29:17 ERROR 69422 --- [Thread-5 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/4/pdf/
+2026-06-15 09:29:17 ERROR 69422 --- [Thread-5 (process_request_thread)] django.server : "GET /api/sales/invoices/4/pdf/ HTTP/1.1" 500 128
+2026-06-15 09:29:23 ERROR 69422 --- [Thread-5 (process_request_thread)] sales.views : PDF generation failed pk=4
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 971, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'service', 'asset'. Choices are: invoice, item
+2026-06-15 09:29:23 ERROR 69422 --- [Thread-5 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/4/pdf/
+2026-06-15 09:29:23 ERROR 69422 --- [Thread-5 (process_request_thread)] django.server : "GET /api/sales/invoices/4/pdf/ HTTP/1.1" 500 128
+2026-06-15 09:44:55 ERROR 69756 --- [Thread-4 (process_request_thread)] sales.views : PDF generation failed pk=3
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 971, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'service', 'asset'. Choices are: invoice, item
+2026-06-15 09:44:55 ERROR 69756 --- [Thread-4 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/3/pdf/
+2026-06-15 09:44:55 ERROR 69756 --- [Thread-4 (process_request_thread)] django.server : "GET /api/sales/invoices/3/pdf/ HTTP/1.1" 500 128
+2026-06-15 09:45:51 ERROR 69756 --- [Thread-2 (process_request_thread)] sales.views : PDF generation failed pk=4
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 971, in get
+    gen    = SalesInvoicePDFGenerator(inv)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/pdf_generator.py", line 78, in __init__
+    self.items = list(self.invoice.items.select_related("asset", "service").all())
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1611, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 767, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 86, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 75, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 300, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1397, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'service', 'asset'. Choices are: invoice, item
+2026-06-15 09:45:51 ERROR 69756 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/sales/invoices/4/pdf/
+2026-06-15 09:45:51 ERROR 69756 --- [Thread-2 (process_request_thread)] django.server : "GET /api/sales/invoices/4/pdf/ HTTP/1.1" 500 128
+2026-06-15 13:55:32 ERROR 79536 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/stock/warehouses/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column stock_stock.expired_quantity does not exist
+LINE 1: ...otal_quantity", "stock_stock"."damaged_quantity", "stock_sto...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/stock/views.py", line 452, in get
+    return Response([_warehouse_to_dict(w) for w in qs.order_by("name")])
+                                                    ~~~~~~~~~~~^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2002, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1369, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2451, in prefetch_related_objects
+    obj_list, additional_lookups = prefetch_one_level(
+                                   ~~~~~~~~~~~~~~~~~~^
+        obj_to_fetch,
+        ^^^^^^^^^^^^^
+    ...<2 lines>...
+        level,
+        ^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2607, in prefetch_one_level
+    ) = prefetcher.get_prefetch_querysets(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        instances, lookup.get_current_querysets(level)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/fields/related_descriptors.py", line 777, in get_prefetch_querysets
+    for rel_obj in queryset:
+                   ^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column stock_stock.expired_quantity does not exist
+LINE 1: ...otal_quantity", "stock_stock"."damaged_quantity", "stock_sto...
+                                                             ^
+
+2026-06-15 13:55:32 ERROR 79536 --- [Thread-3 (process_request_thread)] django.server : "GET /api/stock/warehouses/ HTTP/1.1" 500 189991
+2026-06-15 13:55:57 ERROR 79536 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/stock/warehouses/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column stock_stock.expired_quantity does not exist
+LINE 1: ...otal_quantity", "stock_stock"."damaged_quantity", "stock_sto...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/stock/views.py", line 452, in get
+    return Response([_warehouse_to_dict(w) for w in qs.order_by("name")])
+                                                    ~~~~~~~~~~~^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2002, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1369, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2451, in prefetch_related_objects
+    obj_list, additional_lookups = prefetch_one_level(
+                                   ~~~~~~~~~~~~~~~~~~^
+        obj_to_fetch,
+        ^^^^^^^^^^^^^
+    ...<2 lines>...
+        level,
+        ^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2607, in prefetch_one_level
+    ) = prefetcher.get_prefetch_querysets(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        instances, lookup.get_current_querysets(level)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/fields/related_descriptors.py", line 777, in get_prefetch_querysets
+    for rel_obj in queryset:
+                   ^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column stock_stock.expired_quantity does not exist
+LINE 1: ...otal_quantity", "stock_stock"."damaged_quantity", "stock_sto...
+                                                             ^
+
+2026-06-15 13:55:57 ERROR 79536 --- [Thread-1 (process_request_thread)] django.server : "GET /api/stock/warehouses/ HTTP/1.1" 500 189991
+2026-06-15 13:56:19 ERROR 79536 --- [Thread-3 (process_request_thread)] django.request : Internal Server Error: /api/stock/warehouses/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column stock_stock.expired_quantity does not exist
+LINE 1: ...otal_quantity", "stock_stock"."damaged_quantity", "stock_sto...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/stock/views.py", line 452, in get
+    return Response([_warehouse_to_dict(w) for w in qs.order_by("name")])
+                                                    ~~~~~~~~~~~^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2002, in _fetch_all
+    self._prefetch_related_objects()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1369, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2451, in prefetch_related_objects
+    obj_list, additional_lookups = prefetch_one_level(
+                                   ~~~~~~~~~~~~~~~~~~^
+        obj_to_fetch,
+        ^^^^^^^^^^^^^
+    ...<2 lines>...
+        level,
+        ^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2607, in prefetch_one_level
+    ) = prefetcher.get_prefetch_querysets(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        instances, lookup.get_current_querysets(level)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/fields/related_descriptors.py", line 777, in get_prefetch_querysets
+    for rel_obj in queryset:
+                   ^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column stock_stock.expired_quantity does not exist
+LINE 1: ...otal_quantity", "stock_stock"."damaged_quantity", "stock_sto...
+                                                             ^
+
+2026-06-15 13:56:19 ERROR 79536 --- [Thread-3 (process_request_thread)] django.server : "GET /api/stock/warehouses/ HTTP/1.1" 500 189991
+2026-06-18 09:50:33 ERROR 23646 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/reports/generate/
+2026-06-18 09:50:33 ERROR 23646 --- [Thread-1 (process_request_thread)] django.server : "POST /api/reports/generate/ HTTP/1.1" 500 62
+2026-06-18 09:50:40 ERROR 23646 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/reports/generate/
+2026-06-18 09:50:40 ERROR 23646 --- [Thread-1 (process_request_thread)] django.server : "POST /api/reports/generate/ HTTP/1.1" 500 62
+2026-06-19 06:51:46 ERROR 43389 --- [Thread-9 (process_request_thread)] sales.views : Invoice confirmation email failed pk=8
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 1206, in post
+    _send_invoice_confirmation_email(inv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 463, in _send_invoice_confirmation_email
+    "total_amount": money(financials["total_amount"]),
+                          ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'total_amount'
+2026-06-19 07:12:05 ERROR 43389 --- [Thread-19 (process_request_thread)] sales.views : Invoice confirmation email failed pk=9
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 1206, in post
+    _send_invoice_confirmation_email(inv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 463, in _send_invoice_confirmation_email
+    "total_amount": money(financials["total_amount"]),
+                          ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'total_amount'
+2026-06-23 16:23:39 ERROR 17437 --- [Thread-1 (process_request_thread)] django.request : Internal Server Error: /api/masters/customers/4/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column pettycash_pettycashentry.customer_id does not exist
+LINE 1: ...pettycashentry" INNER JOIN "masters_customer" ON ("pettycash...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/masters/views.py", line 856, in get
+    **_customer_related_data(c),
+      ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/masters/views.py", line 769, in _customer_related_data
+    "pettyCash": [_serialize_entry(entry) for entry in petty_cash_qs[:50]],
+                                                       ~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column pettycash_pettycashentry.customer_id does not exist
+LINE 1: ...pettycashentry" INNER JOIN "masters_customer" ON ("pettycash...
+                                                             ^
+
+2026-06-23 16:23:39 ERROR 17437 --- [Thread-1 (process_request_thread)] django.server : "GET /api/masters/customers/4/ HTTP/1.1" 500 216710
+2026-06-26 10:59:51 ERROR 68831 --- [Thread-2 (process_request_thread)] django.request : Internal Server Error: /api/sales/assets/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "stock_stockbatch" does not exist
+LINE 1: ...."manager_id", "stock_warehouse"."is_active" FROM "stock_sto...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 1977, in get
+    next_batch = _next_available_batch(a)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/sales/views.py", line 151, in _next_available_batch
+    return _available_batch_queryset(asset).first()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 1145, in first
+    for obj in queryset[:1]:
+               ~~~~~~~~^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "stock_stockbatch" does not exist
+LINE 1: ...."manager_id", "stock_warehouse"."is_active" FROM "stock_sto...
+                                                             ^
+
+2026-06-26 10:59:51 ERROR 68831 --- [Thread-2 (process_request_thread)] django.server : "GET /api/sales/assets/?page=1&page_size=20 HTTP/1.1" 500 180580
+2026-06-27 07:05:32 ERROR 85681 --- [Thread-55 (process_request_thread)] django.request : Internal Server Error: /api/stock/detail/1/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/stock/views.py", line 495, in get
+    "stock": _stock_to_dict(stock, include_assignments=False),
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: _stock_to_dict() got an unexpected keyword argument 'include_assignments'
+2026-06-27 07:05:32 ERROR 85681 --- [Thread-55 (process_request_thread)] django.server : "GET /api/stock/detail/1/ HTTP/1.1" 500 106194
+2026-06-27 07:05:38 ERROR 85681 --- [Thread-53 (process_request_thread)] django.request : Internal Server Error: /api/stock/detail/1/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/stock/views.py", line 495, in get
+    "stock": _stock_to_dict(stock, include_assignments=False),
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: _stock_to_dict() got an unexpected keyword argument 'include_assignments'
+2026-06-27 07:05:38 ERROR 85681 --- [Thread-53 (process_request_thread)] django.server : "GET /api/stock/detail/1/ HTTP/1.1" 500 106194
+2026-06-27 07:05:46 ERROR 85681 --- [Thread-53 (process_request_thread)] django.request : Internal Server Error: /api/stock/detail/2/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/stock/views.py", line 495, in get
+    "stock": _stock_to_dict(stock, include_assignments=False),
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: _stock_to_dict() got an unexpected keyword argument 'include_assignments'
+2026-06-27 07:05:46 ERROR 85681 --- [Thread-53 (process_request_thread)] django.server : "GET /api/stock/detail/2/ HTTP/1.1" 500 105729
+2026-06-27 07:05:50 ERROR 85681 --- [Thread-53 (process_request_thread)] django.request : Internal Server Error: /api/stock/detail/1/
+Traceback (most recent call last):
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/django/views/generic/base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/venv/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/teja/Documents/Company_Projects/Elango-works-main/urban/inventory_backend/stock/views.py", line 495, in get
+    "stock": _stock_to_dict(stock, include_assignments=False),
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: _stock_to_dict() got an unexpected keyword argument 'include_assignments'
+2026-06-27 07:05:50 ERROR 85681 --- [Thread-53 (process_request_thread)] django.server : "GET /api/stock/detail/1/ HTTP/1.1" 500 106194

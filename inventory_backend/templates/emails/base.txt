@@ -1,0 +1,13 @@
+{{ title }}
+{{ intro }}
+
+{% block content %}{% endblock %}
+
+{{ company.name }}
+{% for line in company.address_lines %}{{ line }}
+{% endfor %}{% if company.city_state_zip %}{{ company.city_state_zip }}
+{% endif %}{% if company.country %}{{ company.country }}
+{% endif %}{% if company.phone %}Phone: {{ company.phone }}
+{% endif %}{% if support_email %}Email: {{ support_email }}
+{% endif %}{% if company.trn %}TRN: {{ company.trn }}
+{% endif %}

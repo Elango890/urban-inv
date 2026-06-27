@@ -1,0 +1,24 @@
+{% extends "emails/base.txt" %}
+
+{% block content %}
+Dear {{ customer_name }},
+
+Your sales invoice has been confirmed successfully.
+
+Invoice Number: {{ invoice_number }}
+Invoice Date: {{ invoice_date }}
+Due Date: {{ due_date|default:"—" }}
+Payment Status: {{ payment_status }}
+{% if salesperson_name %}Salesperson: {{ salesperson_name }}
+{% endif %}
+
+Items:
+{% for item in items %}- {{ item.item_name }} | Qty {{ item.quantity }} | VAT {{ item.tax_rate }}% | Amount {{ item.line_total }}
+{% endfor %}
+
+Total Amount: {{ total_amount }}
+Paid Amount: {{ paid_amount }}
+Balance Due: {{ balance_amount }}
+
+Notes: {{ notes|default:"No additional notes provided." }}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "emails/base.txt" %}
+
+{% block content %}
+Hello {{ supplier_name }},
+
+Please review the purchase order below.
+
+PO Number: {{ po_number }}
+Order Date: {{ order_date }}
+Expected Delivery: {{ expected_date|default:"—" }}
+Reference No: {{ reference_no|default:"—" }}
+Shipment Preference: {{ shipment_preference|default:"—" }}
+Payment Terms: {{ payment_terms }}
+Delivery Address: {{ delivery_address|default:"—" }}
+
+Items:
+{% for item in items %}- {{ item.item_name }} | Qty {{ item.quantity }} | Rate {{ item.unit_price }} | Tax {{ item.tax_rate }}% | Amount {{ item.line_total }}
+{% endfor %}
+
+Subtotal: {{ subtotal }}
+Discount: {{ discount }}
+Tax: {{ tax }}
+Total: {{ total }}
+
+Notes: {{ notes|default:"No additional notes." }}
+{% endblock %}
